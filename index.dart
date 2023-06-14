@@ -1,16 +1,16 @@
 import 'dart:io';
+import 'dart:math';
 
 class Car {
   int id;
   String? brand;
   String? model;
 
-  Car({required this.id, this.brand, this.model});
+  Car(this.id, this.brand, this.model);
 }
 
 class CarApp {
   List<Car> cars = [];
-  int _nextId = 1;
 
   void run() {
     print('Car Management System');
@@ -58,9 +58,9 @@ class CarApp {
     stdout.write('Enter car model: ');
     String? model = stdin.readLineSync();
 
-    Car newCar = Car(id: _nextId, brand: brand, model: model);
-    cars.add(newCar);
-    _nextId++;
+    var randomID = Random();
+    var car = Car(randomID.nextInt(1000), brand, model);
+    cars.add(car);
 
     print('Car created successfully.');
   }
